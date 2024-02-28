@@ -201,6 +201,7 @@ var set_defaults = function() {
 	game.heat_power_multiplier = 0;
 	game.heat_controlled = 0;
 	game.time_flux = true;
+	game.sell_on_click = false;
 	game.heat_outlet_controlled = 0;
 	game.altered_max_heat = game.base_max_heat;
 	game.altered_max_power = game.base_max_power;
@@ -1679,6 +1680,17 @@ window.enable_time_flux = function() {
 	ui.say('evt', 'time_flux_enabled');
 };
 
+// Enable/Disable time flux
+window.disable_sell_on_click = function() {
+	game.sell_on_click = false;
+	ui.say('evt', 'sell_on_click_disabled');
+};
+
+window.enable_sell_on_click = function() {
+	game.sell_on_click = true;
+	ui.say('evt', 'sell_on_click_enabled');
+};
+
 /////////////////////////////
 // Tile clicks
 /////////////////////////////
@@ -1763,7 +1775,7 @@ var click_func = function(e) {
 
 $reactor.delegate('tile', 'mousedown', function(e) {
 	tile_mousedown = true;
-	tile_mousedown_right = e.which === 3;
+	tile_mousedown_right = (e.which === 3 || game.sell_on_click);
 
 	if ( tiles = click_func.call(this, e) ) {
 		for ( const tile of tiles ) {

@@ -652,6 +652,21 @@ evts.heat_control_enabled = update_button('#heat_control_toggle');
 evts.time_flux_disabled = update_button('#time_flux_toggle');
 evts.time_flux_enabled = update_button('#time_flux_toggle');
 
+
+// Enable/Disable sell on click
+create_toggle_button('#sell_toggle', 'Disable Sell On Click', 'Enable Sell On Click')(
+	() => !ui.game.sell_on_click,
+	function() {
+		window.enable_sell_on_click();
+	},
+	function() {
+		window.disable_sell_on_click();
+	}
+)
+
+evts.sell_on_click_disabled = update_button('#sell_toggle');
+evts.sell_on_click_enabled = update_button('#sell_toggle');
+
 var speed_hack = false;
 create_toggle_button('#speed_hack', 'Disable Speed Hack', 'Enable Speed Hack')(
 	()=>!speed_hack,

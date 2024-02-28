@@ -272,7 +272,8 @@ menu {
 }
 
 #reduce_heat,
-#sell {
+#sell,
+#sell_toggle {
 	display: block;
 	width: 100%;
 }
